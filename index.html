@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cash App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class = "todo-container">
+        <h1>List of incomes/expenses</h1> 
+
+        <div class = "input-group">
+            <label for="Dates">Select date:</label>
+            <select id="Dates"></select>
+        </div>
+        
+        <div class = "input-group">
+            <label for="itemDropdown">Select item:</label>
+            <select id="itemDropdown"></select>
+        </div>
+
+        <button onclick="addIncomeOrExpense()">Add income/expense</button>
+
+        <h2>Incomes</h2>
+        <ul id="income_List"></ul>
+
+        <h3>Expenses</h3>
+        <ul id="expense_List"></ul>
+
+        <h4>Graphs</h4>
+        <canvas id="graphs" width="400" height="200"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
