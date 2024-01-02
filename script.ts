@@ -329,9 +329,6 @@ function loadElementLocaly() {
     console.log('listIncomes', listIncomes)
     console.log('listExpenses', listExpenses)
 
-    localStorage.setItem('incomes', '')
-    localStorage.setItem('expenses', '')
-
     const typeOf = typeof (listIncomes);
 
     console.log(typeOf);
