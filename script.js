@@ -65,9 +65,12 @@ function addIncomeOrExpense() {
     }
     if (selectedType === 'income') {
         const li_income = document.createElement('li');
-        li_income.textContent = IEtext; // Corrected line
         li_income.setAttribute('data-type', 'income');
         income_List.appendChild(li_income);
+        const ItemTypeSpan = document.createElement('span');
+        ItemTypeSpan.id = 'type';
+        ItemTypeSpan.textContent = IEtext;
+        li_income.appendChild(ItemTypeSpan);
         const ItemValueCAD = document.createElement('input');
         ItemValueCAD.type = 'string';
         ItemValueCAD.placeholder = '0.00';
@@ -103,9 +106,12 @@ function addIncomeOrExpense() {
     }
     else if (selectedType === 'expense') {
         const li_expense = document.createElement('li');
-        li_expense.textContent = IEtext;
         li_expense.setAttribute('data-type', 'expense');
         expense_List.appendChild(li_expense);
+        const ItemTypeSpan = document.createElement('span');
+        ItemTypeSpan.id = 'type';
+        ItemTypeSpan.textContent = IEtext;
+        li_expense.appendChild(ItemTypeSpan);
         const ItemValueCAD = document.createElement('input');
         ItemValueCAD.type = 'string';
         ItemValueCAD.placeholder = '0.00';
@@ -234,7 +240,8 @@ function saveElementLocaly() {
     const listExpenses = [];
     const listExpenseItems = expense_List.getElementsByTagName('li');
     for (let i = 0; i < listIncomesItems.length; i++) {
-        const textContent = listIncomesItems[i].textContent;
+        const typeSpan = listIncomesItems[i].querySelector('#type');
+        const textContent = typeSpan.textContent;
         if (textContent !== null) {
             const trimmedText = textContent.trim();
             if (trimmedText !== 'Make a choice' && !listIncomes.includes(trimmedText)) {
@@ -257,6 +264,10 @@ function saveElementLocaly() {
 function loadElementLocaly() {
     const listIncomes = (localStorage.getItem('incomes'));
     const listExpenses = (localStorage.getItem('expenses'));
+    console.log('listIncomes', listIncomes);
+    console.log('listExpenses', listExpenses);
+    localStorage.setItem('incomes', '');
+    localStorage.setItem('expenses', '');
     const typeOf = typeof (listIncomes);
     console.log(typeOf);
     if (listIncomes && listExpenses) {
